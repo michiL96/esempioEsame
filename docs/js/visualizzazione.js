@@ -1,4 +1,6 @@
-var nodeLocation = "http://localhost:8080/";
+var nodeLocation = "https://boiling-cove-42848.herokuapp.com/";
+
+//var nodeLocation = "http://localhost:8080/";
 var serverLocation = "http://localhost:8080/";
 
 function visualizza () {
