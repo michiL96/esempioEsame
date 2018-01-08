@@ -54,23 +54,6 @@ app.get('/visualizza', function(req, res) {
 });
 
 
-/*app.delete('/cancella/:assignmentId', function(req, res) {
-  var index = -1;
-
-  for (var i = 0; i < listaAssigments.length; i++) {
-    if (assignmentId == listaAssigments[i].assignmentId) {
-      index = i;
-    }
-  }
-  var del = listaAssigments[index];
-  listaAssigments.splice(index,1);
-  console.log("sono qui");
-  console.log("del");
-  console.log(del);
-  console.log("lista");
-  console.log(listaAssigments);
-});*/
-
 app.delete('/cancella/:assignmentId', function (req, res) {
   //var assignment = req.body.assignmentID;
   const assignmentId = req.params.assignmentId;
@@ -92,6 +75,30 @@ app.delete('/cancella/:assignmentId', function (req, res) {
   }
   else{
       res.sendStatus(500);
+  }
+});
+
+
+app.post('/modifica/', function (req, res) {
+  var assignment = req.body.assignmentId;
+  var index = -1;
+  for(var i=0; i<lista.length; i++){
+    if(lista[i].assignmentId==assignment)
+      index = i;
+      console.log("found " + assignment);
+      console.log("" + i);
+  }
+  if(index>-1){
+    console.log("ora modifico");
+    console.log(lista[index]);
+    console.log(lista[index].taskId);
+    lista[index].taskId = req.body.taskId;
+    lista[index].workerId = req.body.workerId;
+    lista[index].assignmentResult = req.body.assignmentResult;
+    res.sendStatus(200);
+  }
+  else{
+    res.sendStatus(500);
   }
 });
 
