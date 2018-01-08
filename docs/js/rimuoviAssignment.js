@@ -1,7 +1,8 @@
 var nodeLocation = "https://boiling-cove-42848.herokuapp.com/";
+var serverLocation = "https://boiling-cove-42848.herokuapp.com/";
 
 //var nodeLocation = "http://localhost:8080/";
-var serverLocation = "http://localhost:8080/";
+//var serverLocation = "http://localhost:8080/";
 
 var cancella = function () {
   var assignmentId = document.getElementById("assignmentId");
