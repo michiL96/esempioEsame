@@ -17,9 +17,9 @@ var invio = function () {
     "assignmentResult" : assignmentResult.value
   };
 
-  var url = nodeLocation + "modifica/";
+  var url = nodeLocation + "assignment/";
   fetch(url,{
-    method: "post",
+    method: "put",
     headers: {
       'Content-Type': 'application/json'
     },

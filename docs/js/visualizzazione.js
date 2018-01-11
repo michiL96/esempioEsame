@@ -6,7 +6,7 @@ var serverLocation = "https://boiling-cove-42848.herokuapp.com/";
 
 function visualizza () {
 
-  fetch(nodeLocation + "visualizza/", {
+  fetch(nodeLocation + "assignment/", {
     method:"get",
     headers: {
         'Content-Type': 'application/json'

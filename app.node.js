@@ -13,7 +13,12 @@ app.use(function(req, res, next) {
   }
 });
 
-var listaAssigments = [];
+var listaAssigments = [{
+  taskId: 'ciao',
+  assignmentId: '5',
+  workerId: 'ciao',
+  assignmentResult: 'ciao',
+}];
 const uuid = require('uuid/v4');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -32,7 +37,7 @@ var opzioni = {
 app.use(express.static(__dirname + '/docs', opzioni));
 
 
-app.post('/aggiunta', function(req, res) {
+app.post('/assignment', function(req, res) {
   var newAssignment = {
     taskId: req.body.taskId,
     assignmentId: uuid(),
@@ -46,7 +51,7 @@ app.post('/aggiunta', function(req, res) {
 });
 
 
-app.get('/visualizza', function(req, res) {
+app.get('/assignment', function(req, res) {
   //res.header('Content-Type', 'application/json');
   //res.json(listaAssigments);
   res.send(listaAssigments);
@@ -54,7 +59,7 @@ app.get('/visualizza', function(req, res) {
 });
 
 
-app.delete('/cancella/:assignmentId', function (req, res) {
+app.delete('/assignment/:assignmentId', function (req, res) {
   //var assignment = req.body.assignmentID;
   const assignmentId = req.params.assignmentId;
   console.log(assignmentId);
@@ -79,22 +84,20 @@ app.delete('/cancella/:assignmentId', function (req, res) {
 });
 
 
-app.post('/modifica/', function (req, res) {
+app.put('/assignment/', function (req, res) {
   var assignment = req.body.assignmentId;
   var index = -1;
-  for(var i=0; i<lista.length; i++){
-    if(lista[i].assignmentId==assignment)
+  for(var i=0; i<listaAssigments.length; i++){
+    if(listaAssigments[i].assignmentId==assignment)
       index = i;
       console.log("found " + assignment);
       console.log("" + i);
   }
   if(index>-1){
     console.log("ora modifico");
-    console.log(lista[index]);
-    console.log(lista[index].taskId);
-    lista[index].taskId = req.body.taskId;
-    lista[index].workerId = req.body.workerId;
-    lista[index].assignmentResult = req.body.assignmentResult;
+    listaAssigments[index].taskId = req.body.taskId;
+    listaAssigments[index].workerId = req.body.workerId;
+    listaAssigments[index].assignmentResult = req.body.assignmentResult;
     res.sendStatus(200);
   }
   else{

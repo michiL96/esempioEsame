@@ -7,7 +7,7 @@ var serverLocation = "https://boiling-cove-42848.herokuapp.com/";
 var cancella = function () {
   var assignmentId = document.getElementById("assignmentId");
 
-  var url = nodeLocation + "cancella/" + assignmentId.value;
+  var url = nodeLocation + "assignment/" + assignmentId.value;
   console.log(assignmentId.value);
   fetch(url,{
     method: "delete",

@@ -15,7 +15,7 @@ var invio = function () {
     "assignmentResult" : assignmentResult.value
   };
 
-  var url = nodeLocation + "aggiunta/";
+  var url = nodeLocation + "assignment/";
   fetch(url,{
     method: "post",
     headers: {
